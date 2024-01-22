@@ -1,1 +1,3 @@
 Pekenalkan saya adalah Ran, saya seorang siswa kelas 11 SMK TI BAZMA.
+
+Ini data di ubah dari Visual Studio Code Kita
