@@ -1,12 +1,1 @@
-[
-    {
-        "id": "HFLeIrttZz",
-        "nameProduct": "Belajar Javascript",
-        "description": "Mendalami js expert",
-        "mentor": "Bapak Son",
-        "price": "100k",
-        "duration": "1 bulan",
-        "category": "Pemrograman",
-        "level": "Expert"
-    }
-]
+[{"id":"HFLeIrttZz","nameProduct":"Belajar Javascript","description":"Mendalami js expert","mentor":"Bapak Son","price":"100k","duration":"1 bulan","category":"Pemrograman","level":"Expert"},{"id":"VzF0jpZBhF","nameProduct":"asal","description":"a","mentor":"v","price":"c","duration":"h","category":"aa","level":"s"}]

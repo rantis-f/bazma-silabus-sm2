@@ -20,4 +20,4 @@ const addProduct = async () => {
   );
 };
 
-addProduct()
+module.exports = addProduct

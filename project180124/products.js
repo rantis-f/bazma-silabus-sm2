@@ -99,7 +99,7 @@ const findId = (id) => {
   const index = dataProducts.findIndex((product) => product.id === id);
 
   if (index === -1) {
-    console.log(`Produk dengan id ${id} tidak temukan`);
+    console.log(`Produk dengan id ${id} tidak ditemukan`);
     rl.close();
     return false;
   }
@@ -111,14 +111,14 @@ const deleteById = (id) => {
   const dataProducts = JSON.parse(file);
   const filterProductId = dataProducts.filter((product) => product.id !== id);
 
-  if(filterProductId.length < dataProducts.length){
-    fs.writeFileSync(checkFile,JSON.stringify(filterProductId))
-    console.log('Berhasil menghapus data produk: '+id)
-  } else{
-    console.log(`Produk dengan id ${id} tidak temukan`)
+  if (filterProductId.length < dataProducts.length) {
+    fs.writeFileSync(checkFile, JSON.stringify(filterProductId));
+    console.log("Berhasil menghapus data produk: " + id);
+  } else {
+    console.log(`Produk dengan id ${id} tidak temukan`);
   }
-  rl.close()
-}
+  rl.close();
+};
 
 module.exports = {
   productQuestion,
@@ -129,4 +129,5 @@ module.exports = {
   updateById,
   findId,
   deleteById,
+  rl,
 };

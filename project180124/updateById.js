@@ -4,9 +4,9 @@ const update = async () => {
   const id = await productQuestion("Masukkan id produk: ");
   const existsData = getById(id);
   if (findId(id)) {
-    console.log("------------------------------------");
+    console.log("--------------------------------------")
     console.log(existsData);
-    console.log("------------------------------------");
+    console.log("--------------------------------------");
     const nameProduct = await productQuestion("Masukkan nama produk: ");
     const description = await productQuestion("Masukkan deskipsi produk: ");
     const mentor = await productQuestion("Masukkan nama mentor: ");
@@ -32,4 +32,4 @@ const update = async () => {
   }
 };
 
-update()
+module.exports = update
