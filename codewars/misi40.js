@@ -1,0 +1,1 @@
+var regex= /(http|https):\/\/[a-zA-Z0-9.]+(?:\.com|\.net)/gi
