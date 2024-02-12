@@ -86,3 +86,99 @@ insert into perpustakaan (judul, kategory,deskripsi,penulis,penerbit,tahun_terbi
 7. Harga dimulai dari desc / asc
 8. Harga range dari bebas - bebas (1  - 100000000)
 9. Harus ada update delete
+
+### tugas
+- Tabel author
+CREATE TABLE `author` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nama_author` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+- Tabel rak
+CREATE TABLE `rak` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nomor_rak` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+- Tabel buku
+CREATE TABLE `buku` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nama_buku` VARCHAR(255) NOT NULL,
+  `halaman_buku` INT NOT NULL,
+  `author_id` INT,
+  `rak_id` INT,
+  `rilis_buku` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`author_id`) REFERENCES `author`(`id`),
+  FOREIGN KEY (`rak_id`) REFERENCES `rak`(`id`)
+);
+
+# Menambahkan Data dengan Referensi Valid
+INSERT INTO `author` (`nama_author`) VALUES ('JK Rowling'), ('George Orwell'),('Andrea Hirata'),('Tere Liye'),('Ilana Tan');
+INSERT INTO `rak` (`nomor_rak`) VALUES ('RAK1'), ('RAK2'),('RAK3'),('RAK4'),('RAK5');
+
+INSERT INTO `buku` (`nama_buku`, `halaman_buku`, `author_id`, `rak_id`, `rilis_buku`) VALUES
+('Harry Potter', 350, 1, 1, '1997-06-26'),
+('1984', 300, 2, 2, '1949-06-08'),
+('Laskar Pelangi', 529, 3, 3, '2005-09-11'),
+('Bumi', 440, 4, 4, '2014-01-16'),
+('Sunshine Becomes You', 432, 5, 5, '2012-02-02');
+
+SELECT
+    buku.nama_buku,
+    buku.rilis_buku,
+    author.nama_author,
+    rak.nomor_rak
+FROM
+    buku
+JOIN author ON buku.author_id = author.id
+JOIN rak ON buku.rak_id = rak.id;
+
+DELETE FROM `author` WHERE `id` = 1;
+
+ALTER TABLE `buku` DROP FOREIGN KEY `buku_ibfk_1`;
+ALTER TABLE `buku` DROP FOREIGN KEY `buku_ibfk_2`;
+ALTER TABLE `buku`
+ADD CONSTRAINT `buku_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author`(`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+ADD CONSTRAINT `buku_ibfk_2` FOREIGN KEY (`rak_id`) REFERENCES `rak`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+- LEFT JOIN
+SELECT
+  buku.nama_buku,
+  author.nama_author
+FROM
+  buku
+LEFT JOIN author ON buku.author_id = author.id;
+
+- RIGHT JOIN
+SELECT
+  buku.nama_buku,
+  rak.nomor_rak
+FROM
+  buku
+RIGHT JOIN rak ON buku.rak_id = rak.id;
+
+- INNER JOIN (JOIN)
+SELECT
+  buku.nama_buku,
+  author.nama_author,
+  rak.nomor_rak
+FROM
+  buku
+JOIN author ON buku.author_id = author.id
+JOIN rak ON buku.rak_id = rak.id;
+
+# Penjelasan
+- foreign key 
+berfungsi untuk mengintegrasikan data, memastikan tidak ada ada yang diduplikat, dan memastikan data valid sebelum dimasukkan ke database induk.
+
+- Left join
+Untuk menggabukan tabel. Jika tidak ada data yang sesuai, maka sebelah kanan akan null.
+
+- Right join
+Untuk menggabungkan table. jika tidak ada data yang sesuai, maka sebelah kiri akan null.
+
+- Join
+Untuk menggabungkan tabel. bisa digunakan lebih dari satu.
+
+Mungkin hanya sekian video dan penjelasan yang dapat berikan. Terima kasih sudah menonton video ini.
